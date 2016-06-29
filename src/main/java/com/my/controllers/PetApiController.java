@@ -41,6 +41,22 @@ public class PetApiController {
         return pet;
     }
 
+    @Transactional
+    @RequestMapping(method = RequestMethod.PUT, path = "/")
+    @ResponseBody
+    public Pet updatePet(@RequestBody Pet pet) {
+        PetData petData = new PetData();
+        petData.setId(pet.getId());
+        petData.setName(pet.getName());
+        petData.setType(pet.getType());
+        petData.setBreed(pet.getBreed());
+        petData.setStatus(pet.getStatus());
+
+        petDataRepository.save(petData);
+
+        return pet;
+    }
+
     @Transactional(readOnly = true)
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     @ResponseBody
