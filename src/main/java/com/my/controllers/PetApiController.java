@@ -61,15 +61,30 @@ public class PetApiController {
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     @ResponseBody
     public Pet getById(@PathVariable("id") String id) {
-        PetData petData = petDataRepository.getById(Long.valueOf(id));
+        PetData petData = petDataRepository.findOne(Long.valueOf(id));
 
+        Pet pet = convertPetData(petData);
+
+        return pet;
+    }
+
+    private Pet convertPetData(PetData petData) {
         Pet pet = new Pet();
         pet.setStatus(petData.getStatus());
         pet.setBreed(petData.getBreed());
         pet.setType(petData.getType());
         pet.setId(petData.getId());
         pet.setName(petData.getName());
-
         return pet;
+    }
+
+    @Transactional
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Pet delete(@PathVariable("id") Long id) {
+        PetData petData = petDataRepository.findOne(id);
+        petDataRepository.delete(id);
+
+        return convertPetData(petData);
     }
 }
