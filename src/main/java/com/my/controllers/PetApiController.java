@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by isuru on 6/29/2016.
@@ -86,5 +88,13 @@ public class PetApiController {
         petDataRepository.delete(id);
 
         return convertPetData(petData);
+    }
+
+    @Transactional(readOnly = true)
+    @RequestMapping(method = RequestMethod.GET, path = "/status/{status}")
+    @ResponseBody
+    public List<Pet> getByStatus(@PathVariable("status") String status) {
+        List<PetData> byStatus = petDataRepository.findByStatus(status);
+        return byStatus.stream().map(this::convertPetData).collect(Collectors.toList());
     }
 }
