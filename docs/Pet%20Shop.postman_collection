@@ -1,0 +1,105 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Pet Shop",
+		"_postman_id": "e4d4f805-d47c-15ea-48e7-4ead9f0780d8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get pet",
+			"request": {
+				"url": "http://127.0.0.1:8080/pets/1",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Save pet",
+			"request": {
+				"url": "http://127.0.0.1:8080/pets/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"Jacki\",\n    \"status\" : \"Available\",\n    \"type\" : \"Dog\",\n    \"breed\" : \"Lion-Shephered\" \n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update pet",
+			"request": {
+				"url": "http://127.0.0.1:8080/pets/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\" : 1,\n    \"name\" : \"Jacki\",\n    \"status\" : \"Available\",\n    \"type\" : \"Dog\",\n    \"breed\" : \"Lion-Shephered\" \n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete pet",
+			"request": {
+				"url": "http://127.0.0.1:8080/pets/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get by status",
+			"request": {
+				"url": "http://127.0.0.1:8080/pets/status/Available",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
