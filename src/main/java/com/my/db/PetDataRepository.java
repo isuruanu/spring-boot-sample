@@ -7,4 +7,6 @@ import org.springframework.data.repository.Repository;
  */
 public interface PetDataRepository extends Repository<PetData, Long> {
     PetData save(PetData petData);
+
+    PetData getById(Long aLong);
 }
