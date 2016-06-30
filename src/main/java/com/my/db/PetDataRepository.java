@@ -16,6 +16,6 @@ public interface PetDataRepository extends CrudRepository<PetData, Long> {
 
     void delete(Long aLong);
 
-    @Query("select  from PetData p where p.status = :status")
+    @Query("select p  from PetData p where p.status = :status")
     List<PetData> findByStatus(@Param("status") String status);
 }
